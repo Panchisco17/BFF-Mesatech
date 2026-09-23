@@ -16,7 +16,6 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                // Exigir el scope Solicitudes.Read creado en Azure
                 .requestMatchers("/api/**").hasAuthority("SCOPE_Solicitudes.Read")
                 .anyRequest().authenticated()
             )
