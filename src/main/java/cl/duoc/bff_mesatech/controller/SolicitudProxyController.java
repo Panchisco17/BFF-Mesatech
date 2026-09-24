@@ -26,6 +26,15 @@ public class SolicitudProxyController {
         return restTemplate.getForEntity(url, String.class);
     }
 
+    // --- ¡NUEVO MÉTODO AGREGADO! ---
+    // Este puente permite que React pregunte por las solicitudes de un usuario específico
+    @GetMapping("/api/v1/solicitudes/usuario/{email}")
+    public ResponseEntity<String> listarSolicitudesPorUsuarioProxy(@PathVariable String email) {
+        String url = msOrdersUrl + "/v1/solicitudes/usuario/" + email;
+        return restTemplate.getForEntity(url, String.class);
+    }
+    // -------------------------------
+
     @PostMapping("/api/v1/solicitudes")
     public ResponseEntity<String> crearSolicitudProxy(@RequestBody String solicitudJson) {
         String url = msOrdersUrl + "/v1/solicitudes";
